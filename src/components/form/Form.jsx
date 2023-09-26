@@ -1,12 +1,14 @@
 import React, { useState } from 'react'
 import './Form.css'
 
-const Form = () => {
+const Form = ({ handleAddTasks }) => {
+
     const [inputValue, setInputValue] = useState('');
 
     const handleKeyCapture = (e) => {
         if(e.keyCode === 13) {
-            console.log(inputValue);
+           handleAddTasks(inputValue);
+           setInputValue('');
         }
     }
 
@@ -20,8 +22,10 @@ const Form = () => {
              placeholder="Add Task"
              onKeyUpCapture={ handleKeyCapture }
              className='form-control m-2'
-             onChange={handleInputChange}
-             name='todo' />
+             onChange={ handleInputChange }
+             name='todo' 
+             value={ inputValue }/>
+             
 
   )
 }
